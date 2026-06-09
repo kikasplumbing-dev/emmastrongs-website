@@ -1,29 +1,32 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { HomeHero } from "@/components/sections/HomeHero";
+import {
+  AboutTeaser, StatsBar, ServicesGrid, WhyUsSection, TestimonialsCarousel, CTASection,
+} from "@/components/sections/HomeSections";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Your App" },
-      { name: "description", content: "Replace this with a one-sentence description of your app." },
-      { property: "og:title", content: "Your App" },
-      { property: "og:description", content: "Replace this with a one-sentence description of your app." },
+      { title: "Emmastrons — Transforming Spaces Into Stunning Masterpieces" },
+      { name: "description", content: "Premium interior & exterior decoration services in Nigeria. Elegance, beauty, and functionality for every space." },
+      { property: "og:title", content: "Emmastrons — Premium Interior & Exterior Decorations" },
+      { property: "og:description", content: "Transforming spaces into stunning masterpieces across Nigeria." },
     ],
+    links: [{ rel: "canonical", href: "/" }],
   }),
-  component: Index,
+  component: Home,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
-function Index() {
+function Home() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
+    <>
+      <HomeHero />
+      <AboutTeaser />
+      <StatsBar />
+      <ServicesGrid />
+      <WhyUsSection />
+      <TestimonialsCarousel />
+      <CTASection />
+    </>
   );
 }
