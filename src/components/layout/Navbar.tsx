@@ -1,14 +1,11 @@
 import { useEffect, useState } from "react";
-import { Link, useRouterState } from "@tanstack/react-router";
-import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Link } from "@tanstack/react-router";
+import { motion } from "framer-motion";
 import { NAV } from "@/data/site";
 import { Logo } from "@/components/Logo";
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
-  const [open, setOpen] = useState(false);
-  const { location } = useRouterState();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -16,8 +13,6 @@ export function Navbar() {
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
-
-  useEffect(() => { setOpen(false); }, [location.pathname]);
 
   return (
     <motion.header
@@ -40,13 +35,14 @@ export function Navbar() {
             <Link
               key={item.to}
               to={item.to}
-              className={`relative px-4 py-2 text-sm font-medium transition-colors ${
+              className={`relative px-4 py-2 text-sm font-medium transition-colors group ${
                 scrolled ? "text-foreground" : "text-white"
               } hover:text-gold`}
-              activeProps={{ className: "text-gold" }}
+              activeProps={{ className: "text-gold [&>span]:scale-x-100" }}
               activeOptions={{ exact: true }}
             >
               {item.label}
+              <span className="pointer-events-none absolute left-4 right-4 -bottom-0.5 h-0.5 bg-gold origin-center scale-x-0 transition-transform duration-300 group-hover:scale-x-100" />
             </Link>
           ))}
         </nav>
@@ -59,46 +55,7 @@ export function Navbar() {
             Get a Quote
           </Link>
         </div>
-
-        <button
-          onClick={() => setOpen((v) => !v)}
-          className={`lg:hidden p-2 rounded-md ${scrolled ? "text-foreground" : "text-white"}`}
-          aria-label="Toggle menu"
-        >
-          {open ? <X size={24} /> : <Menu size={24} />}
-        </button>
       </div>
-
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            className="lg:hidden overflow-hidden bg-background border-t border-border"
-          >
-            <div className="container-px mx-auto py-6 flex flex-col gap-1">
-              {NAV.map((item) => (
-                <Link
-                  key={item.to}
-                  to={item.to}
-                  className="py-3 px-4 rounded-md text-foreground hover:bg-secondary font-medium"
-                  activeProps={{ className: "text-gold bg-secondary" }}
-                  activeOptions={{ exact: true }}
-                >
-                  {item.label}
-                </Link>
-              ))}
-              <Link
-                to="/contact"
-                className="mt-4 bg-gradient-gold text-navy font-semibold px-6 py-3 rounded-full text-center"
-              >
-                Get a Quote
-              </Link>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </motion.header>
   );
 }
