@@ -177,34 +177,18 @@ export function TestimonialsCarousel() {
           eyebrow="Client Stories"
           title="Loved by homeowners and businesses alike"
         />
-        <div className="grid md:grid-cols-3 gap-6">
-          {TESTIMONIALS.map((t, i) => (
-            <motion.figure
-              key={t.name}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1, duration: 0.55 }}
-              className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 hover:border-gold/50 transition-all"
-            >
-              <div className="flex text-gold mb-4">
-                {Array.from({ length: t.rating }).map((_, k) => <span key={k}>★</span>)}
-              </div>
-              <blockquote className="text-white/85 leading-relaxed italic">"{t.text}"</blockquote>
-              <figcaption className="mt-6 flex items-center gap-4 pt-6 border-t border-white/10">
-                <img src={t.image} alt={t.name} className="h-12 w-12 rounded-full object-cover" loading="lazy" />
-                <div>
-                  <p className="font-semibold text-white">{t.name}</p>
-                  <p className="text-xs text-white/60">{t.role}</p>
-                </div>
-              </figcaption>
-            </motion.figure>
-          ))}
-        </div>
+        <TestimonialsAutoplay />
       </div>
     </section>
   );
 }
+
+function TestimonialsAutoplay() {
+  return (
+    <AutoplayCarousel />
+  );
+}
+
 
 export function CTASection() {
   return (
