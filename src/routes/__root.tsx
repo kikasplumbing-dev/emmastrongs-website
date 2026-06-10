@@ -66,6 +66,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:site_name", content: "Emmastrons" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:title", content: "Emmastrons — Interior & Exterior Decorations" },
+      { name: "twitter:title", content: "Emmastrons — Interior & Exterior Decorations" },
+      { property: "og:description", content: "Premium interior and exterior decoration in Nigeria. Designing elegant homes, offices, and commercial spaces." },
+      { name: "twitter:description", content: "Premium interior and exterior decoration in Nigeria. Designing elegant homes, offices, and commercial spaces." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/0b0cb672-1079-49a3-9d6b-109a58ba83b1/id-preview-ed436c5b--bd1edf0a-ecfb-443a-97d4-768ac25c62ed.lovable.app-1781050689443.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/0b0cb672-1079-49a3-9d6b-109a58ba83b1/id-preview-ed436c5b--bd1edf0a-ecfb-443a-97d4-768ac25c62ed.lovable.app-1781050689443.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
