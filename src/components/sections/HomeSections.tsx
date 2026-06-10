@@ -1,6 +1,9 @@
 import { motion } from "framer-motion";
 import { Link } from "@tanstack/react-router";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { useRef } from "react";
+import useEmblaCarousel from "embla-carousel-react";
+import Autoplay from "embla-carousel-autoplay";
 import { SectionTitle } from "@/components/ui-custom/SectionTitle";
 import { SERVICES, WHY_US, STATS, TESTIMONIALS, PORTFOLIO } from "@/data/site";
 
@@ -184,10 +187,37 @@ export function TestimonialsCarousel() {
 }
 
 function TestimonialsAutoplay() {
+  const autoplay = useRef(Autoplay({ delay: 4500, stopOnInteraction: false, stopOnMouseEnter: true }));
+  const [emblaRef] = useEmblaCarousel({ loop: true, align: "start" }, [autoplay.current]);
+
   return (
-    <AutoplayCarousel />
+    <div className="mt-4 overflow-hidden" ref={emblaRef}>
+      <div className="flex">
+        {TESTIMONIALS.map((t) => (
+          <figure
+            key={t.name}
+            className="min-w-0 shrink-0 grow-0 basis-full md:basis-1/2 lg:basis-1/3 pl-6 first:pl-0"
+          >
+            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 hover:border-gold/50 transition-all h-full">
+              <div className="flex text-gold mb-4">
+                {Array.from({ length: t.rating }).map((_, k) => <span key={k}>★</span>)}
+              </div>
+              <blockquote className="text-white/85 leading-relaxed italic">"{t.text}"</blockquote>
+              <figcaption className="mt-6 flex items-center gap-4 pt-6 border-t border-white/10">
+                <img src={t.image} alt={t.name} className="h-12 w-12 rounded-full object-cover" loading="lazy" />
+                <div>
+                  <p className="font-semibold text-white">{t.name}</p>
+                  <p className="text-xs text-white/60">{t.role}</p>
+                </div>
+              </figcaption>
+            </div>
+          </figure>
+        ))}
+      </div>
+    </div>
   );
 }
+
 
 
 export function CTASection() {
