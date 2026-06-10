@@ -91,7 +91,7 @@ export function HomeHero() {
               <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
             </Link>
             <Link
-              to="/projects"
+              to="/portfolio"
               className="group border-2 border-white/30 backdrop-blur-sm bg-white/5 text-white font-semibold px-8 py-4 rounded-full hover:bg-white hover:text-navy transition-all inline-flex items-center gap-2"
             >
               <Play size={16} className="fill-current" />

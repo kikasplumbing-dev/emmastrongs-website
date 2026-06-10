@@ -11,6 +11,7 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Navbar } from "@/components/layout/Navbar";
+import { BottomNav } from "@/components/layout/BottomNav";
 import { Footer } from "@/components/layout/Footer";
 
 function NotFoundComponent() {
@@ -102,10 +103,11 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <Navbar />
-      <main className="min-h-screen">
+      <main className="min-h-screen pb-16 lg:pb-0">
         <Outlet />
       </main>
       <Footer />
+      <BottomNav />
     </QueryClientProvider>
   );
 }

@@ -1,6 +1,7 @@
 import {
   Sofa, Building2, Hammer, Lightbulb, Trees, ClipboardList,
   Award, Users, Sparkles, Clock, Palette, HeartHandshake,
+  Home, Info, Briefcase, Image as ImageIcon, Mail as MailIcon,
 } from "lucide-react";
 
 export const CONTACT = {
@@ -8,18 +9,16 @@ export const CONTACT = {
   phone2: "0933290425",
   email: "emmastrons@gmail.com",
   whatsapp: "2347042054107",
-  address: "Abuja, Nigeria",
+  address: "Lagos, Nigeria — available nationwide & worldwide",
   hours: "Mon – Sat: 8:00 AM – 6:00 PM",
 };
 
 export const NAV = [
-  { to: "/", label: "Home" },
-  { to: "/about", label: "About" },
-  { to: "/services", label: "Services" },
-  { to: "/portfolio", label: "Portfolio" },
-  { to: "/projects", label: "Projects" },
-  { to: "/testimonials", label: "Testimonials" },
-  { to: "/contact", label: "Contact" },
+  { to: "/", label: "Home", icon: Home },
+  { to: "/about", label: "About", icon: Info },
+  { to: "/services", label: "Services", icon: Briefcase },
+  { to: "/portfolio", label: "Portfolio", icon: ImageIcon },
+  { to: "/contact", label: "Contact", icon: MailIcon },
 ] as const;
 
 export const SERVICES = [
